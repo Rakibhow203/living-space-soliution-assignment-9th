@@ -1,29 +1,86 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { createContext } from "react";
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
+import { createContext, useEffect, useState } from "react";
 import auth from "../firebase/firebaseConfig";
-
+import { GoogleAuthProvider } from "firebase/auth/cordova";
 
 
 export const AuthContext = createContext(null)
 
 
-const FirebaseProvider = ({children}) => {
-  
-  //create user
+// social auth providers
+const googleProvider = new GoogleAuthProvider();
+
+const FirebaseProvider = ({ children }) => {
+
+  const [user, setUser] = useState(null);
+
+
+ //create user
   
   const createUser = (email, password) => {
    return createUserWithEmailAndPassword(auth, email, password)
   }
 
 
+
+
+// sign in user
+  
+  const signInUser = (email, password) => {
+  
+    return signInWithEmailAndPassword(auth, email, password)
+
+  };
+
+
+  // google login
+
+  const googleLogin = () => {
+
+ return signInWithPopup(auth, googleProvider)
+
+  }
+
+
+  // observer
+  
+  useEffect(() => {
+
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    setUser(user)
+  } 
+});
+
+
+  },
+    
+    
+    [])
+
+
+
+
+
+
+
+
+
   const allValues = { 
-  createUser
+    createUser,
+    signInUser,
+    googleLogin
 }
 
+
+
+
+  
   return (
     <AuthContext.Provider value={allValues}>
       {children}
     </AuthContext.Provider>
+
   );
 };
 

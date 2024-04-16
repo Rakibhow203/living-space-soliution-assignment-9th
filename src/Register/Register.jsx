@@ -9,13 +9,18 @@ const Register = () => {
   const { createUser } = useContext(AuthContext);
 
   const {
-    register, handleSubmit, watch,
+    register, handleSubmit, 
     formState: { errors },
   } = useForm  ();
   const onSubmit = data => {
     
-    console.log(data)
+    const { email, password } = data;
+  createUser(email, password) 
 
+    .then(result => {
+      console.log(result);
+    } )
+    
   };
   
 
@@ -109,4 +114,5 @@ const Register = () => {
 export default Register;
 
 
+// https://github.com/programming-hero-web-course-4/b9a9-real-estate-Rakibhow203
 // https://github.com/programming-hero-web-course-4/b9a9-real-estate-Rakibhow203
