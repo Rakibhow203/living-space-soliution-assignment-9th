@@ -1,0 +1,36 @@
+.slide{
+
+  color: rgb(44, 44, 229);
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+}
+
+
+.slide1{
+  
+  background-image: url( https://i.ibb.co/Bjwbktz/vu-anh-Ti-VPTYCG-3-E-unsplash.jpg);
+
+  
+}
+
+
+.slide2{
+  background-image: url(https://i.ibb.co/cC9P61r/florian-schmidinger-b-79n-Oqf95-I-unsplash.jpg);
+}
+
+
+.slide3{
+  background-image: url(https://i.ibb.co/CsrfPVF/rivage-Cw-Tf-KH5ed-Sk-unsplash.jpg);
+}
+
+
+.slide4{
+  background-image: url(https://i.ibb.co/jbfZHQZ/digital-marketing-agency-ntwrk-g39p1k-Djv-SY-unsplash.jpg);
+}
