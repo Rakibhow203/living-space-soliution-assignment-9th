@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-
+import 'animate.css';
 
 const Nav = () => {
   return (
@@ -67,9 +67,11 @@ const Nav = () => {
                   
                   
 
-            </ul>
-          </div>
-          <NavLink to="/" className="btn btn-ghost font-bold text-xl">
+                </ul>
+                
+              </div>
+              
+          <NavLink to="/" className="btn btn-ghost font-bold text-xl animate__lightSpeedInLeft">
           Living Space Solution
           </NavLink>
         </div>

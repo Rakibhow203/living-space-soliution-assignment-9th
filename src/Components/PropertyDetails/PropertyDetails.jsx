@@ -3,6 +3,7 @@ import { IoLocationSharp } from "react-icons/io5";
 import { RiMoneyDollarCircleFill, RiParentLine } from "react-icons/ri";
 import { Link, useLoaderData, useParams } from "react-router-dom";
 import { VscDebugBreakpointData  } from "react-icons/vsc";
+import 'animate.css';
 
 const PropertyDetails = () => {
     const cards = useLoaderData();
@@ -15,7 +16,7 @@ const PropertyDetails = () => {
       <div className="mb-12 mt-6">
       <div className="hero min-h-screen bg-white rounded-xl ">
         <div className="hero-content flex-col lg:flex-row border p-3 bg-[#eceee9] rounded-md">
-          <img src={card.image} className="max-w-sm rounded-lg shadow-2xl" />
+          <img src={card.image} className="max-w-sm rounded-lg shadow-2xl animate__lightSpeedInLeft" />
           <div className="">
             <h1 className="text-4xl font-bold uppercase"> {card.segment_name}</h1>
             <h4 className="text-1xl font-bold text-xl mt-2">{card.estate_title}</h4>

@@ -15,7 +15,7 @@ import { Link } from "react-router-dom";
     <div className="mr-auto">
        
       <div>
-          <div className="card w-full bg-green-50 shadow-xl mb-3">
+          <div className="card w-full bg-green-50 shadow-xl mb-3 animate__heartBeat">
             
         <figure className="w-[100%] h-44 p-2 rounded-2xl mt-1 ">
           <img src={image} alt="" />
