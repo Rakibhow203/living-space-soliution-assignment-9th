@@ -55,9 +55,7 @@ const SliderSwiper = () => {
 <div><button className=" mb-10 justify-center items-center btn btn-active  bg-[#345217]  mt-5 text-xl text-white">GET A QUOTE</button></div>
 
                   </h1>
-
-                  
-                  
+   
             </div>
               
               

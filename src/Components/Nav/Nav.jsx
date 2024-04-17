@@ -74,7 +74,7 @@ const Nav = () => {
               </div>
               
           <NavLink to="/" className="btn btn-ghost font-bold text-xl animate__lightSpeedInLeft">
-          Living Space Solution
+          <span className="text-[#345217]">Living</span>  Space Solution 
           </NavLink>
         </div>
 
@@ -140,14 +140,14 @@ const Nav = () => {
                   />
                 </div>
 
-                <button onClick={logOut} className="btn bg-secondary">
+                <button onClick={logOut} className="btn bg-secondary  text-white">
                   Logout
                 </button>
               </div>
             </div>
           ) : (
-            <NavLink to="/login" className="btn bg-[#59C6D2]">
-              login
+            <NavLink to="/login" className="btn text-white font-bold bg-[#345217]">
+              Login
             </NavLink>
           )}
         </div>
