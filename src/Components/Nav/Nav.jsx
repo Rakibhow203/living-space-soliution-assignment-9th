@@ -30,7 +30,7 @@ const Nav = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm items-center dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-52 font-bold  "
+              className="menu menu-sm items-center dropdown-content z-[1] p-2 shadow bg-white rounded-box w-52 font-bold  "
             >
               <NavLink
                 to="/"
@@ -70,7 +70,7 @@ const Nav = () => {
             </ul>
           </div>
           <NavLink to="/" className="btn btn-ghost font-bold text-xl">
-          Living Space Solition
+          Living Space Solution
           </NavLink>
         </div>
 

@@ -12,6 +12,8 @@ const Properties = () => {
   }, []);
   return (
     <div>
+      
+      <h2 className="mt-5 mb-5 font-bold text-white text-3xl"> Estate Section</h2>
        <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-6 mt-10">
       {properties.map(property => (
         <Property key={properties.id} property={property}></Property>
