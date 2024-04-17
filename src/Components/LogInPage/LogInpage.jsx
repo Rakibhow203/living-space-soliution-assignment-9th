@@ -1,41 +1,42 @@
-import { useContext } from "react";
-import { NavLink } from "react-router-dom";
-import { AuthContext } from "../../FirebaseProvider/FirebaseProvider";
+
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
+
+import UseAuth from "../Hooks/UseAuth";
 import { useForm } from "react-hook-form";
+import Social from "../Social/Social";
 
 
 const LogInpage = () => {
 
-  const { signInUser } = useContext(AuthContext)
+  
+ const { signInUser } = UseAuth();
+  const {
+    register,
+    handleSubmit,
 
-
-const {
-    register, handleSubmit, 
     formState: { errors },
-  } = useForm  ();
+  } = useForm();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const form = location?.state || '/';
   const onSubmit = data => {
-    
     const { email, password } = data;
-  signInUser(email, password) 
-
-    .then(result => {
-      console.log(result.user);
-    } )
-    .catch(error => {
-      console.log(error);
-    })
-
+    signInUser(email, password).then(result => {
+      if (result.user) {
+        navigate(form);
+      }
+    });
   };
 
   return (
-    <div>
-       <div className="hero min-h-screen bg-base-200">
+   <div>
+      <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col ">
           <div className="text-center ">
             <h1 className="text-5xl font-bold">Login now!</h1>
           </div>
-          <form onSubmit={handleSubmit(onSubmit)} className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-            <div  className="card-body">
+          <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+            <form onSubmit={handleSubmit(onSubmit)} className="card-body">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
@@ -44,22 +45,27 @@ const {
                   type="email"
                   placeholder="email"
                   className="input input-bordered"
-                  {...register("email", { required: true })}
+                  {...register('email', { required: true })}
                 />
-                {errors.email && <span className="text-red-500" >This field is required</span>}
+                {errors.email && (
+                  <span className="text-red-500">This field is required</span>
+                )}
               </div>
               <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Password</span>
-                </label>
-                <input
-                  type="password"
-                  placeholder="password"
-                  className="input input-bordered"
-                  {...register("password", { required: true })}
-
-                />
-                 {errors.password && <span className="text-red-500" >This field is required</span>}
+                <div>
+                  <label className="label">
+                    <span className="label-text">Password</span>
+                  </label>
+                  <input
+                    type="password"
+                    placeholder="password"
+                    className="input input-bordered"
+                    {...register('password', { required: true })}
+                  />
+                  {errors.password && (
+                    <span className="text-red-500">This field is required</span>
+                  )}
+                </div>
                 <label className="label">
                   <a href="#" className="label-text-alt link link-hover">
                     Forgot password?
@@ -67,16 +73,20 @@ const {
                 </label>
                 <p>
                   New to Site?
-                  <NavLink to="/register" className="text-blue-600">
-                    Register
+                  <NavLink to="/register" className="text-blue-600 ml-2">
+                    Create an account
                   </NavLink>
                 </p>
               </div>
+
               <div className="form-control mt-6">
                 <button className="btn btn-primary">Login</button>
               </div>
+            </form>
+            <div className=" text-2xl ml-14 mt-2">
+            <Social></Social>
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>

@@ -17,6 +17,7 @@ import Register from './Register/Register.jsx';
 import PropertyDetails from './Components/PropertyDetails/PropertyDetails.jsx';
 import GetOffers from './Components/GetOffer/GetOffers.jsx';
 import FirebaseProvider from './FirebaseProvider/FirebaseProvider.jsx';
+import Private from './Components/Private/Private.jsx';
 
 
 const router = createBrowserRouter([
@@ -52,7 +53,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/Card/:id',
-        element: <PropertyDetails> </PropertyDetails>,
+        element:<Private> <PropertyDetails> </PropertyDetails></Private>,
         loader: () => fetch('../JsonFackData.json'),
       },
 

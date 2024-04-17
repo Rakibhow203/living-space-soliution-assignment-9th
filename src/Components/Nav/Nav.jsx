@@ -1,7 +1,9 @@
 import { NavLink } from "react-router-dom";
 import 'animate.css';
+import UseAuth from "../Hooks/UseAuth";
 
 const Nav = () => {
+   const { user, logOut } = UseAuth();
   return (
     <div>
       
@@ -123,9 +125,32 @@ const Nav = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <NavLink to="/register" className="btn bg-[#345217] font-bold text-white">
-            Sign Up
-          </NavLink>
+       <div className="navbar-end">
+          {user?.email ? (
+            <div>
+              <div className="flex">
+                <div
+                  className=" tooltip tooltip-open tooltip-left"
+                  data-tip={user.displayName}
+                >
+                  <img
+                    className=" w-10 rounded-full"
+                    src={user.photoURL}
+                    alt=""
+                  />
+                </div>
+
+                <button onClick={logOut} className="btn bg-secondary">
+                  Logout
+                </button>
+              </div>
+            </div>
+          ) : (
+            <NavLink to="/login" className="btn bg-[#59C6D2]">
+              login
+            </NavLink>
+          )}
+        </div>
         </div>
       </div>
     </div>
