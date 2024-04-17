@@ -1,3 +1,4 @@
+import UseAuth from "../Hooks/UseAuth";
 import LogInpage from "../LogInPage/LogInpage";
 
 const Private = ({children}) => {

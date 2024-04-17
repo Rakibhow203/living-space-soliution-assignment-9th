@@ -1,6 +1,6 @@
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
-
+import 'animate.css';
 
 
 import {
@@ -95,7 +95,7 @@ const SliderSwiper = () => {
             </div>
 
           </SwiperSlide>
-            <SwiperSlide className='flex justify-center text-center font-bold bg-slate-400 items-center'>
+            <SwiperSlide className='flex justify-center text-center font-bold bg-slate-400 items-center '>
       
             
               
