@@ -1,86 +1,60 @@
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
-import { createContext, useEffect, useState } from "react";
-import auth from "../firebase/firebaseConfig";
-import { GoogleAuthProvider } from "firebase/auth/cordova";
+import {
+  GithubAuthProvider,
+  GoogleAuthProvider,
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  signOut,
+} from 'firebase/auth';
+import { createContext, useEffect, useState } from 'react';
+import auth from '../firebase/firebaseConfig';
 
 
-export const AuthContext = createContext(null)
-
-
-// social auth providers
+export const AuthContext = createContext(null);
 const googleProvider = new GoogleAuthProvider();
-
+const githubProvider = new GithubAuthProvider();
 const FirebaseProvider = ({ children }) => {
-
   const [user, setUser] = useState(null);
-
-
- //create user
-  
+  console.log(user);
+  // create user
   const createUser = (email, password) => {
-   return createUserWithEmailAndPassword(auth, email, password)
-  }
-
-
-
-
-// sign in user
-  
-  const signInUser = (email, password) => {
-  
-    return signInWithEmailAndPassword(auth, email, password)
-
+    return createUserWithEmailAndPassword(auth, email, password);
   };
-
-
-  // google login
-
+  // sign in user
+  const signInUser = (email, password) => {
+    return signInWithEmailAndPassword(auth, email, password);
+  };
+  // google sign in
   const googleLogin = () => {
-
- return signInWithPopup(auth, googleProvider)
-
-  }
-
-
+    return signInWithPopup(auth, googleProvider);
+  };
+  const githubLogin = () => {
+    return signInWithPopup(auth, githubProvider);
+  };
+  // logout
+  const logOut = () => {
+    setUser(null);
+    signOut(auth);
+  };
   // observer
-  
   useEffect(() => {
-
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    setUser(user)
-  } 
-});
-
-
-  },
-    
-    
-    [])
-
-
-
-
-
-
-
-
-
-  const allValues = { 
+    onAuthStateChanged(auth, user => {
+      if (user) {
+        setUser(user);
+      }
+    });
+  }, []);
+  const allValue = {
     createUser,
     signInUser,
-    googleLogin
-}
-
-
-
-
-  
+    googleLogin,
+    githubLogin,
+    logOut,
+    user,
+  };
   return (
-    <AuthContext.Provider value={allValues}>
-      {children}
-    </AuthContext.Provider>
-
+   <AuthContext.Provider value={allValue}>{children}</AuthContext.Provider>
   );
 };
 

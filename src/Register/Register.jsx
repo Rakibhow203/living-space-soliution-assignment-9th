@@ -1,38 +1,43 @@
-import { useContext } from "react";
-import { NavLink } from "react-router-dom";
-import { AuthContext } from "../FirebaseProvider/FirebaseProvider";
+
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
+
 import { useForm } from "react-hook-form";
+import UseAuth from "../Components/Hooks/UseAuth";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { useState } from "react";
 
 
 const Register = () => {
 
-  const { createUser } = useContext(AuthContext);
-
+  const [showPassword, setShowPassword] = useState(false);
+  const { createUser } = UseAuth();
   const {
-    register, handleSubmit, 
-    formState: { errors },
-  } = useForm  ();
-  const onSubmit = data => {
-    
-    const { email, password } = data;
-  createUser(email, password) 
+    register,
+    handleSubmit,
 
-    .then(result => {
-      console.log(result);
-    } )
-    
+    formState: { errors },
+  } = useForm();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const form = location?.state || '/';
+  const onSubmit = data => {
+    const { email, password } = data;
+    createUser(email, password).then(result => {
+      if (result.user) {
+        navigate(form);
+      }
+    });
   };
-  
 
   return (
     <div>
- <div className="hero min-h-screen bg-base-200 border mt-10">
+  <div className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col ">
-        <div className="text-center border">
-          <h1 className="text-5xl font-bold text-white">Register!</h1>
+        <div className="text-center">
+          <h1 className="text-5xl font-bold">Register!</h1>
         </div>
-        <form onSubmit={handleSubmit(onSubmit)} className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100 border">
-          <div className="card-body">
+        <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+          <form onSubmit={handleSubmit(onSubmit)} className="card-body">
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Name</span>
@@ -41,11 +46,11 @@ const Register = () => {
                 type="text"
                 placeholder="Enter Your Name"
                 className="input input-bordered"
-                  
-                {...register("fullName", { required: true })}
-
-                />
-                {errors.fullName && <span className="text-red-500" >This field is required</span>}
+                {...register('fullName', { required: true })}
+              />
+              {errors.fullName && (
+                <span className="text-red-500">This field is required</span>
+              )}
             </div>
             <div className="form-control">
               <label className="label">
@@ -55,56 +60,64 @@ const Register = () => {
                 type="email"
                 placeholder="email"
                 className="input input-bordered"
-                {...register("email", { required: true })}
-                />
-                {errors.email && <span className="text-red-500" >This field is required</span>}
-              </div>
-              
-<div className="form-control">
-              <label className="label">
-                <span className="label-text">Image Url</span>
-              </label>
-              <input
-                type="email"
-                placeholder="image url"
-                className="input input-bordered"
-                
-                  {...register("imageUrl", { required: true })} 
-                />
-                
+                {...register('email', { required: true })}
+              />
+              {errors.email && (
+                <span className="text-red-500">This field is required</span>
+              )}
             </div>
-
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Password</span>
+                <span className="label-text">Image URL</span>
               </label>
               <input
-                type="password"
-                placeholder="password"
+                type="text"
+                placeholder="Image URL"
                 className="input input-bordered"
-                {...register("password", { required: true })} 
-                />
-                {errors.imageUrl && <span className="text-red-500" >This field is required</span>}
+                {...register('image')}
+              />
+            </div>
+            <div className="form-control">
+              <div className="relative">
+                <label className="label">
+                  <span className="label-text">Password</span>
+                </label>
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  name="password"
+                  placeholder="password"
+                  className="input input-bordered"
+                  {...register('password', { required: true })}
+                />{' '}
+                {errors.email && (
+                  <span className="text-red-500">This field is required</span>
+                )}
+                <span
+                  className="absolute mt-4 -ml-5 "
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? <FaEyeSlash></FaEyeSlash> : <FaEye></FaEye>}
+                </span>
+              </div>
               <label className="label">
                 <a href="#" className="label-text-alt link link-hover">
                   Forgot password?
                 </a>
               </label>
-              <p>
-                Have a Account?{' '}
-                <NavLink to="/login" className="text-blue-600">
+              <p className="font-bold">
+                Have an Account?
+                <NavLink to="/login" className="text-blue-600 ml-3">
                   Login
                 </NavLink>
               </p>
             </div>
             <div className="form-control mt-6">
-              <button className="btn btn-primary">REGISTER</button>
+              <button className="btn btn-primary">Register</button>
             </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
-      
 
 
     </div>
