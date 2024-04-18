@@ -5,10 +5,13 @@ import { useForm } from "react-hook-form";
 import UseAuth from "../Components/Hooks/UseAuth";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useState } from "react";
-
+  import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
 
+
+  const registerHandler =() => toast ("register successfully")
   const [showPassword, setShowPassword] = useState(false);
   const { createUser } = UseAuth();
   const {
@@ -26,6 +29,10 @@ const Register = () => {
       if (result.user) {
         navigate(form);
       }
+
+
+
+
     });
   };
 
@@ -112,7 +119,8 @@ const Register = () => {
               </p>
             </div>
             <div className="form-control mt-6">
-              <button className="btn btn-primary">Register</button>
+                <button onClick={registerHandler} className="btn btn-primary">Register</button>
+                <ToastContainer />
             </div>
           </form>
         </div>

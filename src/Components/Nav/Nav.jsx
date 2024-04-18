@@ -110,8 +110,13 @@ const Nav = () => {
             >
               Contact Us
                 </NavLink>
-                
-   <NavLink
+
+
+                {
+                  
+
+
+                  user && <NavLink
                 to="/GetOffers"
                 className={({ isActive }) =>
                   isActive
@@ -121,6 +126,10 @@ const Nav = () => {
               >
                 Offer Corner
                   </NavLink>
+}
+
+
+   
 
           </ul>
         </div>
