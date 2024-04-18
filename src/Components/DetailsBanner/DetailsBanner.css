@@ -1,0 +1,21 @@
+.banner{
+
+  color: rgb(44, 44, 229);
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+}
+
+
+.banner2{
+  
+  background-image: url( https://i.ibb.co/Bjwbktz/vu-anh-Ti-VPTYCG-3-E-unsplash.jpg);
+
+  
+}

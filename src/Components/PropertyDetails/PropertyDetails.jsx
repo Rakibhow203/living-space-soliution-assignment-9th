@@ -4,6 +4,8 @@ import { RiMoneyDollarCircleFill, RiParentLine } from "react-icons/ri";
 import { Link, useLoaderData, useParams } from "react-router-dom";
 import { VscDebugBreakpointData  } from "react-icons/vsc";
 import 'animate.css';
+import DetailsBanner from "../DetailsBanner/DetailsBanner";
+
 
 
 const PropertyDetails = () => {
@@ -14,8 +16,16 @@ const PropertyDetails = () => {
   console.log(card);
   return (
     
+
     <div className="mb-12 mt-6">
-      <div>
+
+      <h1 className="mt-5 mb-5">
+        
+
+        <DetailsBanner></DetailsBanner>
+</h1>
+      
+      <div className="mt-5 mb-5">
 
 
       </div>

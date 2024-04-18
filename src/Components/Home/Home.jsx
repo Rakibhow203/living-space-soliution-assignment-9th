@@ -1,5 +1,7 @@
 
+import CuriousMindsWantToKnow from "../CuriousMindsWantToKnow/CuriousMindsWantToKnow";
 import Properties from "../Properties/Properties";
+import RaveReviews from "../RaveReviews/RaveReviews";
 import SliderSwiper from "../Slider/SliderSwiper";
 
 
@@ -9,7 +11,8 @@ const Home = () => {
       
       <SliderSwiper></SliderSwiper>
       <Properties></Properties>
-
+      <RaveReviews></RaveReviews>
+      <CuriousMindsWantToKnow></CuriousMindsWantToKnow>
 
     </div>
   );
