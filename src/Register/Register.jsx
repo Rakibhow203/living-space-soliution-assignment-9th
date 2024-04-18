@@ -7,7 +7,11 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useState } from "react";
   import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
+import { FieldValue } from "firebase/firestore";
 
+
+
+  
 const Register = () => {
 
   
@@ -67,11 +71,24 @@ const Register = () => {
                 type="email"
                 placeholder="email"
                 className="input input-bordered"
-                {...register('email', { required: true })}
+                  {...register('email', {
+                  
+                  
+                  
+                    pattern: {
+
+
+                      value: 
+                        /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                      message: "invalid email format",
+                    },
+
+                    validate: (FieldValue) => {
+                      return FieldValue !== "admin@example.com" || "enter a different email address"
+                    }
+                  })}
               />
-              {errors.email && (
-                <span className="text-red-500">This field is required</span>
-              )}
+                <p className="text-red-500"> { errors.email?.message }</p>
             </div>
             <div className="form-control">
               <label className="label">
@@ -95,9 +112,30 @@ const Register = () => {
                   name="password"
                   placeholder="password"
                   className="input input-bordered"
-                  {...register('password', { required: true })}
-                />{' '}
-                {errors.email && (
+                    {...register('password', { 
+
+
+
+pattern: {
+
+
+                      value: 
+                        /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                      message: "invalid password format",
+                    },
+
+                    validate: (FieldValue) => {
+                      return FieldValue !== "password" || "enter a different password"
+                    }
+
+
+
+                     })}
+                    
+                  />
+                  {' '}
+                  
+                {errors.password && (
                   <span className="text-red-500">This field is required</span>
                 )}
                 <span
