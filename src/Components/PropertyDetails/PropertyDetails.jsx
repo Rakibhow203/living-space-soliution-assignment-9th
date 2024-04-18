@@ -5,6 +5,7 @@ import { Link, useLoaderData, useParams } from "react-router-dom";
 import { VscDebugBreakpointData  } from "react-icons/vsc";
 import 'animate.css';
 
+
 const PropertyDetails = () => {
     const cards = useLoaderData();
   const { id } = useParams();
@@ -13,7 +14,12 @@ const PropertyDetails = () => {
   console.log(card);
   return (
     
-      <div className="mb-12 mt-6">
+    <div className="mb-12 mt-6">
+      <div>
+
+
+      </div>
+
       <div className="hero min-h-screen bg-white rounded-xl ">
         <div className="hero-content flex-col lg:flex-row border p-3 bg-[#eceee9] rounded-md">
           <img src={card.image} className="max-w-sm rounded-lg shadow-2xl animate__lightSpeedInLeft" />

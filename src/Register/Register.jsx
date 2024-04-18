@@ -10,6 +10,8 @@ import { useState } from "react";
 
 const Register = () => {
 
+  
+
 
   const registerHandler =() => toast ("register successfully")
   const [showPassword, setShowPassword] = useState(false);
@@ -29,12 +31,10 @@ const Register = () => {
       if (result.user) {
         navigate(form);
       }
-
-
-
-
     });
   };
+
+ 
 
   return (
     <div>
@@ -87,7 +87,8 @@ const Register = () => {
             <div className="form-control">
               <div className="relative">
                 <label className="label">
-                  <span className="label-text">Password</span>
+                    <span className="label-text">Password</span>
+                    
                 </label>
                 <input
                   type={showPassword ? 'text' : 'password'}

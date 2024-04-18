@@ -32,6 +32,7 @@ const Social = () => {
 
   const handleGithubLogin = () => {
     githubLogin().then(result => {
+      toast("Wow logIn successfully");
       if (result.user) {
         navigate(form);
       }
@@ -50,7 +51,8 @@ const Social = () => {
             <ToastContainer />
         </button>
         <button onClick={handleGithubLogin}>
-          <FaGithub></FaGithub>
+            <FaGithub></FaGithub>
+            <ToastContainer />
         </button>
       </div>
     </div>

@@ -114,8 +114,6 @@ const Nav = () => {
 
                 {
                   
-
-
                   user && <NavLink
                 to="/GetOffers"
                 className={({ isActive }) =>
