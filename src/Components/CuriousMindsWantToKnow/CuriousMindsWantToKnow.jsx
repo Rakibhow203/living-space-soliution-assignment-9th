@@ -5,7 +5,7 @@ const CuriousMindsWantToKnow = () => {
 
   
     <div >
-      <div><h1 className="text-white text-3xl font-extrabold animate__lightSpeedOutRight">Curious Section</h1></div>    
+      <div><h1 className="text-white text-3xl font-extrabold animate__lightSpeedOutRigh mt-6">Curious Section</h1></div>    
       
       
 <h1 className="text-green-800 mt-10 text-3xl font-extrabold animate__lightSpeedOutRight mb-10">Curious Minds Want to Know</h1>
